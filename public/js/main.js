@@ -1,18 +1,39 @@
 import {personnage,guerrier,archer,mage,boss} from "./classes.js";
 
+function postureOff(perso) {
+    perso.classe.push("Offensif");
+    perso.ptsAtt = perso.ptsAtt * 1.4;
+    perso.pdv= perso.pdv * 0.75;
+    perso.ptsAtt = Math.round(perso.ptsAtt)
+    perso.pdv = Math.round(perso.pdv)
+}
 
+function postureDef(perso) {
+    perso.classe.push("Défensif");
+    perso.ptsAtt = perso.ptsAtt * 0.5;
+    perso.pdv = perso.pdv * 2.5;
+    perso.ptsAtt = Math.round(perso.ptsAtt)
+    perso.pdv = Math.round(perso.pdv)
+    // Besoin d'ajouter 2 chances d'être attaqué
+}
+
+function combat(boss,heroWar,heroMag,heroArc) {
+    while (boss.pdv > 0 || (heroWar.pdv > 0 && heroMag.pdv > 0 && heroArc.pdv > 0)) {
+        
+    }
+}
 
 // Les 3 boss
 
-let sauron = new boss("Sauron",500,40);
-let chronos = new boss("Chronos",300,65);
-let lilith = new boss("Lilith",400,50);
+let sauron = new bossFinal("Sauron",500,40);
+let chronos = new bossFinal("Chronos",300,65);
+let lilith = new bossFinal("Lilith",400,50);
 
 // les 3 héros
 
-let heroGuerrier = new guerrier("",0,0);
-let heroMage = new mage("",0,0);
-let heroArcher = new archer("",0,0);
+let heroGuerrier = new guerrier("",0,0,["Guerrier"]);
+let heroMage = new mage("",0,0,["Mage"]);
+let heroArcher = new archer("",0,0,["Archer"]);
 
 //Début du jeu
 
@@ -26,7 +47,7 @@ console.log("* Chaque héros possède une caractéristique propre à lui-même *
 console.log("----------------------------------------------------------------------------");
 console.log("🪓 LE GUERRIER 🪓");
 console.log("🪓 Tous les tours le guerrier gagne 1 point de rage au bout de 4 points, 🪓");
-console.log("🪓 le guerrier gagne 25% ( * 1.25 ) d'attaque supplémentaire durant 1 tours 🪓");
+console.log("🪓 le guerrier gagne 25% d'attaque supplémentaire durant 1 tours 🪓");
 console.log("🪓 puis retombe à 0 de rage et perd ce bonus. 🪓");
 console.log("----------------------------------------------------------------------------");
 console.log("🧙‍♂️ LE MAGE 🧙‍♂️");
@@ -123,22 +144,71 @@ while (totalPA != 0) {
     }
 }
 
+
+console.log("----------------------------------------------------------------------------");
+
+console.log("* Pour chacun de vos héros, trois manières d'affronter cette quête de toute une vie s'offre à vous *");
+console.log("🗡️ La manière OFFENSIVE 🗡️");
+console.log("🗡️ Elle augmente de deux cinquième (x1.4) ses dégâts d'attaque mais diminue d'un quart ses points de vie (x0.75) 🗡️");
+console.log("🛡️ La manière DÉFENSIVE 🛡️");
+console.log("🛡️ Diminue de moitié(x0.5) ses dégats d'attaque mais augmente de deux fois et demi ses points de vie (x2.5) 🛡️");
+console.log("🛡️ Augmente de deux les chances d'être attaqué par le boss 🛡️");
+console.log("🟢 La manière NORMALE 🟢");
+console.log("🟢 Le héros n'aura pas d'augmentation ou diminution des ses caractéristiques 🟢");
+console.log("----------------------------------------------------------------------------");
+
+let heros = [heroGuerrier,heroMage,heroArcher];
+
+
+for (let i = 0; i < heros.length; i++) {
+    let postureChoice = +prompt(`🗡️ 1. La manière OFFENSIVE 🗡️\n🛡️ 2. La manière DÉFENSIVE 🛡️\n🟢3. La manière NORMALE 🟢\nQuelle est la manière avec laquelle votre ${heros[i].classe} va aborder cette aventure ? (1,2)`)
+    if (postureChoice == 1){
+        postureOff(heros[i]);
+    } else if (postureChoice == 2){
+        postureDef(heros[i]);
+    } else if (postureChoice == 3){
+        heros[i].classe.push("Normale");
+    } else {
+        alert("❗ Erreur d'entrée, veuillez uniquement choisir 1, 2 ou 3 ❗")
+        i--;
+    }
+}
+
+console.log(`* ${heroGuerrier.nom}, votre ${heroGuerrier.classe[0]} agira avec une posture ${heroGuerrier.classe[1]} ! *`);
+console.log(`* ${heroMage.nom}, votre ${heroMage.classe[0]} agira avec une posture ${heroMage.classe[1]} ! *`);
+console.log(`* ${heroArcher.nom}, votre ${heroArcher.classe[0]} agira avec une posture ${heroArcher.classe[1]} ! *`);
+
+console.log("----------------------------------------------------------------------------");
+
+  //Attribuer les points de mana du mage : un chiffre qui sera aléatoirement imposé entre les suivants 7 , 9 ou 11.
+  let randomMana = Math.floor(Math.random() * 3);
+
+    if (randomMana == 0) {
+        heroMage.mana = 7;
+    } else if (randomMana == 1){
+        heroMage.mana = 9;
+    } else if (randomMana == 2){
+        heroMage.mana = 11;
+    }
+
+  //Attribuer le nombre de flèches : un chiffre qui sera aléatoirement imposé entre  7, 8 , 9 ,10 ,11.
+    heroArcher.fleche = Math.floor(Math.random() * (11 - 7) + 7);
+
+
 console.log("* Voici les différentes stats de vos héros : *");
-console.log(`🪓 ${heroGuerrier.nom} : 🪓\n🪓 Points de vie : ${heroGuerrier.pdv} 🪓\n🪓 Points d'attaque : ${heroGuerrier.ptsAtt} 🪓`);
-console.log(`🧙‍♂️ ${heroMage.nom} : 🧙‍♂️\n🧙‍♂️ Points de vie : ${heroMage.pdv} 🧙‍♂️\n🧙‍♂️ Points d'attaque : ${heroMage.ptsAtt} 🧙‍♂️`);
-console.log(`🏹 ${heroGuerrier.nom} : 🏹\n🏹 Points de vie : ${heroGuerrier.pdv} 🏹\n🏹 Points d'attaque : ${heroGuerrier.ptsAtt} 🏹`);
+console.log(`🪓 ${heroGuerrier.nom} : 🪓\n🪓 Points de vie : ${heroGuerrier.pdv} 🪓\n🪓 Points d'attaque : ${heroGuerrier.ptsAtt} 🪓\n🪓 Points de rage : ${heroGuerrier.rage} 🪓`);
+console.log(`🧙‍♂️ ${heroMage.nom} : 🧙‍♂️\n🧙‍♂️ Points de vie : ${heroMage.pdv} 🧙‍♂️\n🧙‍♂️ Points d'attaque : ${heroMage.ptsAtt} 🧙‍♂️\n🧙‍♂️ Points de mana : ${heroMage.mana} 🧙‍♂️`);
+console.log(`🏹 ${heroArcher.nom} : 🏹\n🏹 Points de vie : ${heroArcher.pdv} 🏹\n🏹 Points d'attaque : ${heroArcher.ptsAtt} 🏹\n🏹 Nombre de flèches : ${heroArcher.fleche} 🏹`);
+
+console.log("----------------------------------------------------------------------------");
+console.log("🏰 En quête du très prisé trésor du donjon de Molenkmar, vous vous dirigez vers ce dernier d'un pas assuré et conquérant 🏰");
+console.log("🏰 Vous avez le choix entre 3 chemins différents afin de débuter votre mission 🏰");
+console.log("🏰 1. L'aile ouest du donjon, poussièreuse et remplie de nids d'arachnides et de toiles épaisses les recouvrant... 🏰");
+console.log("🏰 2. L'aile est du donjon, une odeur cadavérique et nauséabonde émane de ces couloirs étroits... 🏰");
+console.log("🏰 3. Le hall central, des cadavres sont suspendus le long d'un tapis tâché de sang déroulé dans l'obscurité... 🏰");
 console.log("----------------------------------------------------------------------------");
 
-
-console.log("🧌 LES BOSS 🧌");
-console.log("🧌 Trois boss différents défendent Molenkmar 🧌");
-console.log("🧌 Tous protègent un des 3 chemins ayant un accès direct à la salle du trésor 🧌");
-console.log("🧌 1. L'aile ouest du donjon, poussièreuse et remplie de nids d'arachnides et de toiles épaisses les recouvrant... 🧌");
-console.log("🧌 2. L'aile est du donjon, une odeur cadavérique et nauséabonde émane de ces couloirs étroits... 🧌");
-console.log("🧌 3. Le hall central, des cadavres sont suspendus le long d'un tapis tâché de sang déroulé dans l'obscurité... 🧌");
-console.log("----------------------------------------------------------------------------");
-
-let chemin = +prompt("🧌 Quel chemin souhaites-tu emprunter ? 🧌");
+let chemin = +prompt("🏰 Quel chemin souhaites-tu emprunter ? 🏰");
 let choiceDone = false;
 let gameBoss = {};
 
@@ -172,7 +242,10 @@ while (choiceDone == false) {
     
         default:
             alert("Affrontez vos peurs, faites un choix (1 , 2 , 3)");
-            chemin = +prompt("🧌 Quel chemin souhaites-tu emprunter ? 🧌");
+            chemin = +prompt("🏰 Quel chemin souhaites-tu emprunter ? 🏰");
             break;
     }
 }
+
+alert(`☠️ LES 3 HÉROS SAUTENT À LA GORGE DE ${gameBoss.nom} ☠️`)
+combat(gameBoss,heroGuerrier,heroMage,heroArcher);
