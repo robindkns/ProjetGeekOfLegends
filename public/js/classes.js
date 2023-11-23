@@ -1,4 +1,4 @@
-class boss{
+export class boss{
     constructor(nom,pdv,ptsAtt){
         this.nom = nom;
         this.pdv = pdv;
@@ -11,7 +11,7 @@ class boss{
     }
 }
 
-class personnage{
+export class personnage{
     constructor(nom,pdv,ptsAtt){
         this.nom = nom;
         this.pdv = pdv;
@@ -27,21 +27,21 @@ class personnage{
     }
 }
 
-class guerrier extends personnage{
+export class guerrier extends personnage{
     constructor(nom,pdv,ptsAtt,rage){
         super(nom,pdv,ptsAtt);
         this.rage = rage;
     }
 }
 
-class mage extends personnage{
+export class mage extends personnage{
     constructor(nom,pdv,ptsAtt,mana){
         super(nom,pdv,ptsAtt);
         this.mana = mana;
     }
 }
 
-class archer extends personnage{
+export class archer extends personnage{
     constructor(nom,pdv,ptsAtt,fleche){
         super(nom,pdv,ptsAtt);
         this.fleche = fleche;
