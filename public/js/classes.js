@@ -35,13 +35,13 @@ export class guerrier extends personnage{
         if(this.rage == 4){
             this.ptsAtt = this.ptsAtt * 1.25;
             ennemi.pdv = ennemi.pdv - this.ptsAtt;
-            console.log(`☠️ ${this.nom} A LA RAAAAAGE ! ☠️`);
+            console.log(`☠️ ${this.nom} A LA RAAAAAGE ! 🩸 ☠️`);
             console.log(`☠️ ${this.nom} attaque ${ennemi.nom} ! ☠️`);
             console.log(`☠️ ${ennemi.nom} perd ${this.ptsAtt}PV ☠️`);
             this.rage = 0
         }else{
             ennemi.pdv = ennemi.pdv - this.ptsAtt;
-            console.log(`☠️ ${this.nom} a une rage de ${this.rage} ☠️`);
+            console.log(`☠️ ${this.nom} a une rage de ${this.rage} 🩸 ☠️`);
             console.log(`☠️ ${this.nom} attaque ${ennemi.nom} ! ☠️`);
             console.log(`☠️ ${ennemi.nom} perd ${this.ptsAtt}PV ☠️`);
         }
@@ -59,10 +59,10 @@ export class mage extends personnage{
             console.log(`☠️ ${this.nom} attaque ${ennemi.nom} ! ☠️`);
             console.log(`☠️ ${ennemi.nom} perd ${this.ptsAtt}PV ☠️`);
             this.mana = this.mana - 2;
-            console.log(`☠️ Il lui reste ${this.mana} points de mana ☠️`);
+            console.log(`☠️ Il lui reste ${this.mana} points de mana 💧 ☠️`);
         } else {
             console.log(`☠️ ${this.nom} n'a plus assez de mana ! ${this.nom} passe son tour ☠️`);
-            console.log(`☠️${this.nom} récupère 7 points de mana ☠️`);
+            console.log(`☠️${this.nom} récupère 7 points de mana 💧 ☠️`);
             this.mana = this.mana + 7;
         }
     }
@@ -80,10 +80,10 @@ export class archer extends personnage{
             console.log(`☠️ ${ennemi.nom} perd ${this.ptsAtt}PV ☠️`);
             this.fleche = this.fleche + 1;
             console.log(`☠️ ${this.nom} récupère une flèche in extremis ! ☠️`);
-            console.log(`☠️ Il lui reste ${this.fleche} flèches ☠️`);
+            console.log(`☠️ Il lui reste ${this.fleche} flèches 🏹 ☠️`);
             } else {
             console.log(`☠️ ${this.nom} n'a plus assez de flèche ! Il ne peut pas attaquer... ☠️`);
-            console.log(`☠️ ${this.nom} passe son tour et récupère 6 flèches ☠️`);
+            console.log(`☠️ ${this.nom} passe son tour et récupère 6 flèches 🏹 ☠️`);
         }
     }
 }
