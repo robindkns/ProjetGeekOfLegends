@@ -16,6 +16,255 @@ function postureDef(perso) {
     perso.pdv = Math.round(perso.pdv)
 }
 
+function enigme(nameBoss) {
+    let rep ="";
+    let essai = 3;
+    let repFinale;
+    let enigma = Math.floor(Math.random() * 3);
+    console.log(`❓ ${nameBoss} : "Hmm hmm... Très bien... Je vais vous laisser une dernière chance" ❓`);
+    console.log(`❓ ${nameBoss} : "Je vais vous poser une énigme, si vous y répondez correctement, je vous laisserai peut-être la vie sauve" ❓`);
+    console.log(`❓ ${nameBoss} : "Si vous vous trompez, je me verrai obliger de mettre un terme à cette mascarade..." ❓`);
+    if (nameBoss == "Sauron") {
+        switch (enigma) {
+            case 0:
+                while (essai != 0) {
+                    rep = prompt("❓ Je suis quelque chose qui t'appartient mais que les gens utilisent plus que toi, qui suis-je ? ❓\n🔄️ Nombre d'essai restants : " + essai);
+                    rep = rep.toLowerCase();
+                    if (rep == "prenom" || rep == "prénom" || rep == "le prenom" || rep == " le prénom" || rep == "mon prénom" || rep == "mon prenom") {
+                        repFinale = true;
+                        essai = 0;
+                    }else {
+                        repFinale = false;
+                        essai--;
+                    }
+                }
+                if (repFinale == true){
+                    console.log(`👁️ ${nameBoss} : "... Comment est-ce possible ?!" 👁️`);
+                    console.log(`👁️ ${nameBoss} : "JE NE VOUS LAISSERAI JAMAIS PASSER ! JE VOUS RÉDUIRAI TOUS EN CENDRES !!!" 👁️`);
+                    console.log(`* Dans un élan de rage ${nameBoss} saute sur les 3 héros, mais se prend les pieds dans le tapis ensanglanté de son propre sang dû au combat *`);
+                    console.log(`* Émèché de tous les côtés, ${nameBoss} n'arriva plus à se relever et finit par agoniser lentement se noyant dans son propre sang *`);
+                    return true;
+                } else if (repFinale == false){
+                    console.log(`👁️ ${nameBoss} : "MOUAHAHAHAHAHAH... C'EST TOTALEMENT FAUX !" 👁️`);
+                    console.log(`👁️ ${nameBoss} : "Vous vous êtes bien débrouillés jusque là... Mais maintenant je vais utiliser mon attaque ultime !" 👁️`);
+                    console.log(`* ${nameBoss} commença à se charger de rage, et assèna violemment les héros de son attaque ultime *`);
+                    return false;
+                }
+                
+            case 1:
+                while (essai != 0) {
+                    rep = prompt("❓ En étant cassé je suis plus utile que quand je ne le suis pas, qui suis-je ? ❓\n🔄️ Nombre d'essai restants : " + essai);
+                    rep = rep.toLowerCase();
+                    if (rep == "oeuf" || rep == "un oeuf" || rep == "l'oeuf") {
+                        repFinale = true;
+                        essai = 0;
+                    }else {
+                        repFinale = false;
+                        essai--;
+                    }
+                }
+                if (repFinale == true){
+                    console.log(`👁️ ${nameBoss} : "... Comment est-ce possible ?!" 👁️`);
+                    console.log(`👁️ ${nameBoss} : "JE NE VOUS LAISSERAI JAMAIS PASSER ! JE VOUS RÉDUIRAI TOUS EN CENDRES !!!" 👁️`);
+                    console.log(`* Dans un élan de rage ${nameBoss} saute sur les 3 héros, mais se prend les pieds dans le tapis ensanglanté de son propre sang dû au combat *`);
+                    console.log(`* Émèché de tous les côtés, ${nameBoss} n'arriva plus à se relever et finit par agoniser lentement se noyant dans son propre sang *`);
+                    return true;
+                } else if (repFinale == false){
+                    console.log(`👁️ ${nameBoss} : "MOUAHAHAHAHAHAH... C'EST TOTALEMENT FAUX !" 👁️`);
+                    console.log(`👁️ ${nameBoss} : "Vous vous êtes bien débrouillés jusque là... Mais maintenant je vais utiliser mon attaque ultime !" 👁️`);
+                    console.log(`* ${nameBoss} commença à se charger de rage, et assèna violemment les héros de son attaque ultime *`);
+                    return false;
+                }
+                
+            case 2:
+                while (essai != 0) {
+                    rep = prompt("❓ Je suis grand quand je suis jeune et petit quand je suis vieux. Je rayonne de vie et le vent est mon plus grand ennemi. Que suis-je ? ❓\n🔄️ Nombre d'essai restants : " + essai);
+                    rep = rep.toLowerCase();
+                    if (rep == "bougie" || rep == "cierge" || rep == "une bougie" || rep == "un cierge") {
+                        repFinale = true;
+                        essai = 0;
+                    }else {
+                        repFinale = false;
+                        essai--;
+                    }
+                }
+                if (repFinale == true) {
+                    console.log(`👁️ ${nameBoss} : "... Comment est-ce possible ?!" 👁️`);
+                    console.log(`👁️ ${nameBoss} : "JE NE VOUS LAISSERAI JAMAIS PASSER ! JE VOUS RÉDUIRAI TOUS EN CENDRES !!!" 👁️`);
+                    console.log(`* Dans un élan de rage ${nameBoss} saute sur les 3 héros, mais se prend les pieds dans le tapis ensanglanté de son propre sang dû au combat *`);
+                    console.log(`* Émèché de tous les côtés, ${nameBoss} n'arriva plus à se relever et finit par agoniser lentement se noyant dans son propre sang *`);
+                    return true;
+                } else if (repFinale == false) {
+                    console.log(`👁️ ${nameBoss} : "MOUAHAHAHAHAHAH... C'EST TOTALEMENT FAUX !" 👁️`);
+                    console.log(`👁️ ${nameBoss} : "Vous vous êtes bien débrouillés jusque là... Mais maintenant je vais utiliser mon attaque ultime !" 👁️`);
+                    console.log(`* ${nameBoss} commença à se charger de rage, et assèna violemment les héros de son attaque ultime *`);
+                    return false;
+                }
+            default:
+                console.log("404 ERROR");
+                break;
+        }
+        
+    } else if (nameBoss == "Lilith"){
+        switch (enigma) {
+            case 0:
+                while (essai != 0) {
+                    rep = prompt("❓ Je suis entouré de poils et je suis au milieu. J'ai une ouverture que tu peux voir qui s'ouvre et se ferme, qui suis-je ? ❓\n🔄️ Nombre d'essai restants : " + essai);
+                    rep = rep.toLowerCase();
+                    if (rep == "oeil" || rep == "yeux" || rep == "un oeil" || rep == "les yeux") {
+                        repFinale = true;
+                        essai = 0;
+                    }else {
+                        repFinale = false;
+                        essai--;
+                    }
+                }
+                if (repFinale == true) {
+                    console.log(`🥀 ${nameBoss} : "Encore et toujours... QUE DE LA CHANCE !" 🥀`);
+                    console.log(`🥀 ${nameBoss} : "MAIS JE N'AI AUCUNE PAROLE, JE VOUS DÉVORERAI VOS ORGANES DE TOUTE MANIÈRE !" 🥀`);
+                    console.log(`* Aveuglé par sa fierté, ${nameBoss} tenta d'infliger un coup fatal, mais tomba instantanément à genoux *`);
+                    console.log(`* Épuisée du combat, ${nameBoss} lâcha son dernier souffle et finit par se vider de ses dernières gouttes de sang...  *`);
+                    return true;
+                } else if (repFinale == false) {
+                    console.log(`🥀 ${nameBoss} : "Hmmmm... Hehehe, je le savais, JE LE SAVAIS QUE VOUS ÉTIEZ FAIBLES !" 🥀`);
+                    console.log(`🥀 ${nameBoss} : "Il est temps de vous envoyer dans mon royaume !" 🥀`);
+                    console.log(`* ${nameBoss} puisa dans ses dernières forces, et dévora ce qu'il restait des braves héros *`);
+                    return false;
+                }
+            case 1:
+                while (essai != 0) {
+                    rep = prompt("❓ Je me lève quand je suis content, mais je suis plus petit que le reste, qui suis-je ? ❓\n🔄️ Nombre d'essai restants : " + essai);
+                    rep = rep.toLowerCase();
+                    if (rep == "pouce" || rep == "le pouce" || rep == "un pouce") {
+                        repFinale = true;
+                        essai = 0;
+                    }else {
+                        repFinale = false;
+                        essai--;
+                    }
+                }
+                if (repFinale == true) {
+                    console.log(`🥀 ${nameBoss} : "Encore et toujours... QUE DE LA CHANCE !" 🥀`);
+                    console.log(`🥀 ${nameBoss} : "MAIS JE N'AI AUCUNE PAROLE, JE VOUS DÉVORERAI VOS ORGANES DE TOUTE MANIÈRE !" 🥀`);
+                    console.log(`* Aveuglé par sa fierté, ${nameBoss} tenta d'infliger un coup fatal, mais tomba instantanément à genoux *`);
+                    console.log(`* Épuisée du combat, ${nameBoss} lâcha son dernier souffle et finit par se vider de ses dernières gouttes de sang...  *`);
+                    return true;
+                } else if(repFinale == false) {
+                    console.log(`🥀 ${nameBoss} : "Hmmmm... Hehehe, je le savais, JE LE SAVAIS QUE VOUS ÉTIEZ FAIBLES !" 🥀`);
+                    console.log(`🥀 ${nameBoss} : "Il est temps de vous envoyer dans mon royaume !" 🥀`);
+                    console.log(`* ${nameBoss} puisa dans ses dernières forces, et dévora ce qu'il restait des braves héros *`);
+                    return false;
+                }
+            case 2:
+                while (essai != 0) {
+                    rep = prompt("❓ Je suis une partie de l'être humain capable d'augmenter par 9 sa taille, qui suis-je ? ❓\n🔄️ Nombre d'essai restants : " + essai);
+                    rep = rep.toLowerCase();
+                    if (rep == "pupille" || rep == "une pupille" || rep == "la pupille" || rep == "les pupilles") {
+                        repFinale = true;
+                        essai = 0;
+                    }else {
+                        repFinale = false;
+                        essai--;
+                    }
+                }
+                if (repFinale == true) {
+                    console.log(`🥀 ${nameBoss} : "Encore et toujours... QUE DE LA CHANCE !" 🥀`);
+                    console.log(`🥀 ${nameBoss} : "MAIS JE N'AI AUCUNE PAROLE, JE VOUS DÉVORERAI VOS ORGANES DE TOUTE MANIÈRE !" 🥀`);
+                    console.log(`* Aveuglé par sa fierté, ${nameBoss} tenta d'infliger un coup fatal, mais tomba instantanément à genoux *`);
+                    console.log(`* Épuisée du combat, ${nameBoss} lâcha son dernier souffle et finit par se vider de ses dernières gouttes de sang...  *`);
+                    return true;
+                } else if (repFinale == false){
+                    console.log(`🥀 ${nameBoss} : "Hmmmm... Hehehe, je le savais, JE LE SAVAIS QUE VOUS ÉTIEZ FAIBLES !" 🥀`);
+                    console.log(`🥀 ${nameBoss} : "Il est temps de vous envoyer dans mon royaume !" 🥀`);
+                    console.log(`* ${nameBoss} puisa dans ses dernières forces, et dévora ce qu'il restait des braves héros *`);
+                    return false;
+                }
+            default:
+                console.log("404 ERROR");
+                break;
+        }
+    }
+    else if (nameBoss == "Chronos"){
+        switch (enigma) {
+            case 0:
+                while (essai != 0) {
+                    rep = prompt("❓ Toute chose, il dévore. Il ronge le fer, fait disparaître l’acier et réduit les pierres en poussière. Qui est-ce ? ❓\n🔄️ Nombre d'essai restants : " + essai);
+                    rep = rep.toLowerCase();
+                    if (rep == "temps" || rep == "le temps") {
+                        repFinale = true;
+                        essai = 0;
+                    }else {
+                        repFinale = false;
+                        essai--;
+                    }
+                }
+                if (repFinale == true) {
+                    console.log(`🪽 ${nameBoss} : "Hahaha, de toute façon, cette énigme n'avait aucune valeur !" 🪽`);
+                    console.log(`🪽 ${nameBoss} : "QUE JE VOUS TERMINE, N'ÉTAIT QU'UNE QUESTION DE TEMPS !" 🪽`);
+                    console.log(`* Étourdi par l'intelligence de la réponse, ${nameBoss} tenta de courir rapidement pour assener un dernier coup, mais finit par trébucher *`);
+                    console.log(`* ${nameBoss} tomba, et n'arriva plus à se relever. Son corps fut pris de spasmes qui n'en finissent plus *`);
+                    return true;
+                } else if (repFinale == false){
+                    console.log(`🪽 ${nameBoss} : "Je n'avais aucun doute de votre incompétence..." 🪽`);
+                    console.log(`🪽 ${nameBoss} : "Je vais maintenant utiliser 100% de ma puissance !" 🪽`);
+                    console.log(`* ${nameBoss} s'élança à la vitesse de la lumière afin de lancer le coup final *`);
+                    return false;
+                }
+            case 1:
+                while (essai != 0) {
+                    rep = prompt("❓ Qui a deux aiguilles, mais ne pique pas ? ❓\n🔄️ Nombre d'essai restants : " + essai);
+                    rep = rep.toLowerCase();
+                    if (rep == "montre" || rep == "une montre" || rep == "la montre" || rep == "horloge" || rep == "une horloge" || rep == "l'horloge") {
+                        repFinale = true;
+                        essai = 0;
+                    }else {
+                        repFinale = false;
+                        essai--;
+                    }
+                }
+                if (repFinale == true) {
+                    console.log(`🪽 ${nameBoss} : "Hahaha, de toute façon, cette énigme n'avait aucune valeur !" 🪽`);
+                    console.log(`🪽 ${nameBoss} : "QUE JE VOUS TERMINE, N'ÉTAIT QU'UNE QUESTION DE TEMPS !" 🪽`);
+                    console.log(`* Étourdi par l'intelligence de la réponse, ${nameBoss} tenta de courir rapidement pour assener un dernier coup, mais finit par trébucher *`);
+                    console.log(`* ${nameBoss} tomba, et n'arriva plus à se relever. Son corps fut pris de spasmes qui n'en finissent plus *`);
+                    return true;
+                } else if(repFinale == false){
+                    console.log(`🪽 ${nameBoss} : "Je n'avais aucun doute de votre incompétence..." 🪽`);
+                    console.log(`🪽 ${nameBoss} : "Je vais maintenant utiliser 100% de ma puissance !" 🪽`);
+                    console.log(`* ${nameBoss} s'élança à la vitesse de la lumière afin de lancer le coup final *`);
+                    return false;
+                }
+            case 2:
+                while (essai != 0) {
+                    rep = prompt("❓ Qu'est-ce qui peut remplir une pièce entière sans prendre de place ? ❓\n🔄️ Nombre d'essai restants : " + essai);
+                    rep = rep.toLowerCase();
+                    if (rep == "lumière" || rep == "lumiere" || rep == "la lumière" || rep == "une lumière") {
+                        repFinale = true;
+                        essai = 0;
+                    }else {
+                        repFinale = false;
+                        essai--;
+                    }
+                }
+                if (repFinale == true) {
+                    console.log(`🪽 ${nameBoss} : "Hahaha, de toute façon, cette énigme n'avait aucune valeur !" 🪽`);
+                    console.log(`🪽 ${nameBoss} : "QUE JE VOUS TERMINE, N'ÉTAIT QU'UNE QUESTION DE TEMPS !" 🪽`);
+                    console.log(`* Étourdi par l'intelligence de la réponse, ${nameBoss} tenta de courir rapidement pour assener un dernier coup, mais finit par trébucher *`);
+                    console.log(`* ${nameBoss} tomba, et n'arriva plus à se relever. Son corps fut pris de spasmes qui n'en finissent plus *`);
+                    return true;
+                } else if (repFinale == false) {
+                    console.log(`🪽 ${nameBoss} : "Je n'avais aucun doute de votre incompétence..." 🪽`);
+                    console.log(`🪽 ${nameBoss} : "Je vais maintenant utiliser 100% de ma puissance !" 🪽`);
+                    console.log(`* ${nameBoss} s'élança à la vitesse de la lumière afin de lancer le coup final *`);
+                    return false;
+                }
+            default:
+                console.log("404 ERROR");
+                break;
+        }
+    }
+}
+
 function combat(boss,heroWar,heroMag,heroArc) {
     let randomAttacked = [heroWar,heroMag,heroArc];
     let cpt = 0;
@@ -24,15 +273,12 @@ function combat(boss,heroWar,heroMag,heroArc) {
     console.log("----------------------------------------------------------------------------");
     console.log("☠️ Le premier tour du combat commence ! ☠️");
 
-    while (boss.pdv > 0 && cimetiere.length != 3) {
-        if (boss.pdv <= pvEnigme) {
-            
-        }
+    while (boss.pdv > 0 && cimetiere.length < 3) {
 
         for (let i = 0; i < 1; i++) {
             console.log("☠️ Vous avez le choix entre vous défendre, ou attaquer ! Que choisissez-vous ? ☠️");
             let turnChoice = +prompt("🗡️ 1. ATTAQUER 🗡️\n🛡️ 2. SE DÉFENDRE 🛡️");
-            if (turnChoice == 1) {
+            if (turnChoice == 1) {          //L'utilisateur décide d'attaquer
                 if (heroWar.pdv > 0) {
                     heroWar.rageAttack(boss);
                 }
@@ -59,12 +305,12 @@ function combat(boss,heroWar,heroMag,heroArc) {
                 boss.attackBoss(randomAttacked[randomChoice]);
 
                 if (cpt != 0) {
-                    for (let i = 0; i < cpt; i++) {    //Retire les doublons du tableau duquel on envoie aléatoirement l'héros qui se fera attaquer     
+                    for (let i = 0; i < cpt; i++) {     //Retire les doublons du tableau duquel on envoie aléatoirement l'héros qui se fera attaquer     
                         randomAttacked.pop();
                     }
                 }
                 cpt=0;
-            } else if (turnChoice == 2){
+            } else if (turnChoice == 2){                //L'utilisateur décide de se défendre
                 let randomChoice = Math.floor(Math.random() * randomAttacked.length);
                 console.log(`☠️ ${boss.nom} se rue vers ${randomAttacked[randomChoice].nom} ! ☠️`);
                 boss.defenseBoss(randomAttacked[randomChoice]);
@@ -86,13 +332,27 @@ function combat(boss,heroWar,heroMag,heroArc) {
                 }
             }
         }
-        console.log(`Cimetierre : ${cimetiere}`);
-        console.log(`En vie : ${randomAttacked}`);
+        // console.log(`Cimetierre : ${cimetiere}`);
+        // console.log(`En vie : ${randomAttacked}`);
         console.log("-------------------------------------------------");
+        if (boss.pdv <= pvEnigme) {
+            let outcomeEnigme = enigme(boss.nom);
+            if (outcomeEnigme == true) {
+                boss.pdv = 0;
+            }else if (outcomeEnigme == false) {
+                heroArc.pdv = 0;
+                heroMag.pdv = 0;
+                heroWar.pdv = 0;
+                cimetiere.push(heroArc,heroMag,heroWar);
+            }
+        }
     }
-    if (cimetiere.length == 3){
-        console.log(`⚰️ Vous avez lamentablement échoué... ⚰️`);
+
+    
+
+    if (cimetiere.length >= 3){
         console.log(`☠️ ${boss.nom} : "Hahahaha... Ils pensaient vraiment pouvoir dompter ma puissance..." ☠️`);
+        console.log(`⚰️ Vous avez lamentablement échoué... ⚰️`);
     } else {
         console.log(`☠️ ${boss.nom} a été vaincu ! ☠️`);
         console.log(`🏆 FÉLICITATIONS ! VOUS ÊTES VENU À BOUT DU BOSS ! 🏆`);
@@ -188,11 +448,11 @@ while (totalPV != 0) {
 }
 
 while (totalPA != 0) {
-    heroGuerrier.ptsAtt = +prompt(`🪓 Combien de PA souhaitez vous attribuer à votre Guerrier ? (Points restants à distribuer : ${totalPA}) 🪓`);
+    heroGuerrier.ptsAtt = +prompt(`🪓 Combien de points d'attaque souhaitez vous attribuer à votre Guerrier ? (Points restants à distribuer : ${totalPA}) 🪓`);
     totalPA = totalPA - heroGuerrier.ptsAtt;
-    heroMage.ptsAtt = +prompt(`🧙‍♂️ Combien de PA souhaitez vous attribuer à votre Mage ? (Points restants à distribuer : ${totalPA}) 🧙‍♂️`);
+    heroMage.ptsAtt = +prompt(`🧙‍♂️ Combien de points d'attaque souhaitez vous attribuer à votre Mage ? (Points restants à distribuer : ${totalPA}) 🧙‍♂️`);
     totalPA = totalPA - heroMage.ptsAtt;
-    heroArcher.ptsAtt = +prompt(`🏹 Combien de PA souhaitez vous attribuer à votre Archer ? (Points restants à distribuer : ${totalPA}) 🏹`);
+    heroArcher.ptsAtt = +prompt(`🏹 Combien de points d'attaque souhaitez vous attribuer à votre Archer ? (Points restants à distribuer : ${totalPA}) 🏹`);
     totalPA = totalPA - heroArcher.ptsAtt;
 
     if (totalPA < 0) {
@@ -239,7 +499,7 @@ let heros = [heroGuerrier,heroMage,heroArcher];
 
 
 for (let i = 0; i < heros.length; i++) {
-    let postureChoice = +prompt(`🗡️ 1. La manière OFFENSIVE 🗡️\n🛡️ 2. La manière DÉFENSIVE 🛡️\n🟢 3. La manière NORMALE 🟢\nQuelle est la manière avec laquelle votre ${heros[i].classe} va aborder cette aventure ? (1,2)`)
+    let postureChoice = +prompt(`🗡️ 1. La manière OFFENSIVE 🗡️\n🛡️ 2. La manière DÉFENSIVE 🛡️\n🟢 3. La manière NORMALE 🟢\nQuelle est la manière avec laquelle votre ${heros[i].classe} va aborder cette aventure ? (1,2,3)`)
     if (postureChoice == 1){
         postureOff(heros[i]);
     } else if (postureChoice == 2){
