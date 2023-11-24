@@ -409,11 +409,11 @@ console.log("🪓 le guerrier gagne 25% d'attaque supplémentaire durant 1 tour 
 console.log("🪓 puis retombe à 0 de rage et perd ce bonus. 🪓");
 console.log("----------------------------------------------------------------------------");
 console.log("🧙‍♂️ LE MAGE 🧙‍♂️");
-console.log("🧙‍♂️ Les attaques du mage lui coute 2 points quand il n'a plus assez de point de mana pour attaquer, 🧙‍♂️");
+console.log("🧙‍♂️ Les attaques du mage lui coute 2 points de mana, quand il n'en a plus assez pour attaquer, 🧙‍♂️");
 console.log("🧙‍♂️ il passe 1 tour sans attaquer et il récupère 7 points de mana 🧙‍♂️");
 console.log("----------------------------------------------------------------------------");
 console.log("🏹 L'ARCHER 🏹");
-console.log("🏹 Les attaques de l'archer consomme deux flèches par tour et récupère une flèche chaque tour 🏹");
+console.log("🏹 Les attaques de l'archer consomme deux flèches par tour et il récupère une flèche chaque tour 🏹");
 console.log("🏹 Quand il n'a plus de flèches il passe un tour et récupère 6 flèches 🏹");
 console.log("----------------------------------------------------------------------------");
 
