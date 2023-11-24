@@ -4,10 +4,16 @@ export class bossFinal{
         this.pdv = pdv;
         this.ptsAtt = ptsAtt;
     }
-    attackHero(hero){
+    attackBoss(hero){
         hero.pdv = hero.pdv - this.ptsAtt;
-        console.log(`${hero.nom} a perdu ${this.ptsAtt} PV !`);
-        console.log(`Il lui reste ${hero.pdv} PV.`);
+        console.log(`☠️ ${this.nom} attaque ${hero.nom} ! ☠️`);
+        console.log(`☠️ ${hero.nom} perd ${this.ptsAtt}PV ☠️`);
+    }
+    defenseBoss(hero){
+        let damageAttack = this.ptsAtt/2
+        hero.pdv = hero.pdv - damageAttack;
+        console.log(`☠️ ${this.nom} attaque ${hero.nom} ! ☠️`);
+        console.log(`☠️ ${hero.nom} perd ${damageAttack}PV ☠️`);
     }
 }
 
@@ -17,14 +23,6 @@ export class personnage{
         this.pdv = pdv;
         this.ptsAtt = ptsAtt;
         this.classe = classe;
-    }
-    attack(ennemi){
-        this.ptsAtt = this.ptsAtt * 1.4;
-        this.pdv = this.pdv * 0.75;
-    }
-    defense(ennemi){
-        this.ptsAtt = this.ptsAtt * 0.5;
-        this.pdv = this.pdv * 2.5
     }
 }
 
@@ -59,7 +57,7 @@ export class mage extends personnage{
             this.mana = this.mana - 2;
         } else {
             console.log(`☠️ ${this.nom} n'a plus assez de mana ! ${this.nom} passe son tour ☠️`);
-            console.log(`☠️${this.nom} récupèrera 7 points de mana au prochain tour ☠️`);
+            console.log(`☠️${this.nom} récupère 7 points de mana ☠️`);
             this.mana = this.mana + 7;
         }
     }
@@ -71,6 +69,15 @@ export class archer extends personnage{
         this.fleche = fleche;
     }
     flecheAttack(ennemi){
-
+        if (this.fleche >= 2) {
+            ennemi.pdv = ennemi.pdv - this.ptsAtt;
+            console.log(`☠️ ${this.nom} attaque ${ennemi.nom} à l'aide de deux de ses flèches ! ☠️`);
+            console.log(`☠️ ${ennemi.nom} perd ${this.ptsAtt}PV ☠️`);
+            this.fleche = this.fleche + 1;
+            console.log(`☠️ ${this.nom} récupère une flèche in extremis ! ☠️`);
+        } else {
+            console.log(`☠️ ${this.nom} n'a plus assez de flèche ! Il ne peut pas attaquer... ☠️`);
+            console.log(`☠️ ${this.nom} passe son tour et récupère 6 flèches ☠️`);
+        }
     }
 }

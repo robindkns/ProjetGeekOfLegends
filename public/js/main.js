@@ -1,4 +1,4 @@
-import {personnage,guerrier,archer,mage,boss} from "./classes.js";
+import {personnage,guerrier,archer,mage,bossFinal} from "./classes.js";
 
 function postureOff(perso) {
     perso.classe.push("Offensif");
@@ -14,12 +14,47 @@ function postureDef(perso) {
     perso.pdv = perso.pdv * 2.5;
     perso.ptsAtt = Math.round(perso.ptsAtt)
     perso.pdv = Math.round(perso.pdv)
-    // Besoin d'ajouter 2 chances d'être attaqué
 }
 
 function combat(boss,heroWar,heroMag,heroArc) {
+    let randomAttacked = [heroWar,heroMag,heroArc];
+    let cpt = 0;
+    console.log("----------------------------------------------------------------------------");
+    console.log("☠️ Le premier tour du combat commence ! ☠️");
     while (boss.pdv > 0 || (heroWar.pdv > 0 && heroMag.pdv > 0 && heroArc.pdv > 0)) {
-        
+        for (let i = 0; i < 1; i++) {
+            console.log("☠️ Vous avez le choix entre vous défendre, ou attaquer ! Que choisissez-vous ? ☠️");
+            let turnChoice = +prompt("🗡️ 1. ATTAQUER 🗡️\n🛡️ 2. SE DÉFENDRE 🛡️");
+            if (turnChoice == 1) {
+                heroWar.rageAttack(boss);
+                heroMag.manaAttack(boss);
+                heroArc.flecheAttack(boss);
+
+                for (let i = 0; i < randomAttacked.length; i++) {               //Augmente aux héros en posture Défensive, une chance d'être attaqué
+                    if (randomAttacked[i].classe[1] == "Défensif") {
+                        let moreChance = randomAttacked[i];
+                        randomAttacked.push(moreChance);
+                        cpt++;
+                        i++;
+                    }
+                }
+
+                let randomChoice = Math.floor(Math.random() * randomAttacked.length);
+                console.log(`☠️ ${boss.nom} se rue vers ${randomAttacked[randomChoice].nom} ! ☠️`);
+                boss.attackBoss(randomAttacked[randomChoice]);
+
+                for (let i = 0; i < cpt; i++) {    //Retire les doublons du tableau duquel on envoie aléatoirement l'héros qui se fera attaquer     
+                    randomAttacked.pop();
+                }
+            } else if (turnChoice == 2){
+                let randomChoice = Math.floor(Math.random() * randomAttacked.length);
+                console.log(`☠️ ${boss.nom} se rue vers ${randomAttacked[randomChoice].nom} ! ☠️`);
+                boss.defenseBoss(randomAttacked[randomChoice]);
+            } else {
+                alert("❗ Erreur d'entrée, veuillez uniquement choisir 1 ou 2 ❗");
+                i--;
+            }
+        }
     }
 }
 
@@ -31,9 +66,9 @@ let lilith = new bossFinal("Lilith",400,50);
 
 // les 3 héros
 
-let heroGuerrier = new guerrier("",0,0,["Guerrier"]);
-let heroMage = new mage("",0,0,["Mage"]);
-let heroArcher = new archer("",0,0,["Archer"]);
+let heroGuerrier = new guerrier("",0,0,["Guerrier"],0);
+let heroMage = new mage("",0,0,["Mage"],0);
+let heroArcher = new archer("",0,0,["Archer"],0);
 
 //Début du jeu
 
@@ -161,7 +196,7 @@ let heros = [heroGuerrier,heroMage,heroArcher];
 
 
 for (let i = 0; i < heros.length; i++) {
-    let postureChoice = +prompt(`🗡️ 1. La manière OFFENSIVE 🗡️\n🛡️ 2. La manière DÉFENSIVE 🛡️\n🟢3. La manière NORMALE 🟢\nQuelle est la manière avec laquelle votre ${heros[i].classe} va aborder cette aventure ? (1,2)`)
+    let postureChoice = +prompt(`🗡️ 1. La manière OFFENSIVE 🗡️\n🛡️ 2. La manière DÉFENSIVE 🛡️\n🟢 3. La manière NORMALE 🟢\nQuelle est la manière avec laquelle votre ${heros[i].classe} va aborder cette aventure ? (1,2)`)
     if (postureChoice == 1){
         postureOff(heros[i]);
     } else if (postureChoice == 2){
@@ -180,8 +215,8 @@ console.log(`* ${heroArcher.nom}, votre ${heroArcher.classe[0]} agira avec une p
 
 console.log("----------------------------------------------------------------------------");
 
-  //Attribuer les points de mana du mage : un chiffre qui sera aléatoirement imposé entre les suivants 7 , 9 ou 11.
-  let randomMana = Math.floor(Math.random() * 3);
+    //Attribuer les points de mana du mage : un chiffre qui sera aléatoirement imposé entre les suivants 7 , 9 ou 11.
+    let randomMana = Math.floor(Math.random() * 3);
 
     if (randomMana == 0) {
         heroMage.mana = 7;
@@ -196,9 +231,9 @@ console.log("-------------------------------------------------------------------
 
 
 console.log("* Voici les différentes stats de vos héros : *");
-console.log(`🪓 ${heroGuerrier.nom} : 🪓\n🪓 Points de vie : ${heroGuerrier.pdv} 🪓\n🪓 Points d'attaque : ${heroGuerrier.ptsAtt} 🪓\n🪓 Points de rage : ${heroGuerrier.rage} 🪓`);
-console.log(`🧙‍♂️ ${heroMage.nom} : 🧙‍♂️\n🧙‍♂️ Points de vie : ${heroMage.pdv} 🧙‍♂️\n🧙‍♂️ Points d'attaque : ${heroMage.ptsAtt} 🧙‍♂️\n🧙‍♂️ Points de mana : ${heroMage.mana} 🧙‍♂️`);
-console.log(`🏹 ${heroArcher.nom} : 🏹\n🏹 Points de vie : ${heroArcher.pdv} 🏹\n🏹 Points d'attaque : ${heroArcher.ptsAtt} 🏹\n🏹 Nombre de flèches : ${heroArcher.fleche} 🏹`);
+console.log(`🪓 ${heroGuerrier.nom} 🪓\n🪓 Points de vie : ${heroGuerrier.pdv} 🪓\n🪓 Points d'attaque : ${heroGuerrier.ptsAtt} 🪓\n🪓 Points de rage : ${heroGuerrier.rage} 🪓`);
+console.log(`🧙‍♂️ ${heroMage.nom} 🧙‍♂️\n🧙‍♂️ Points de vie : ${heroMage.pdv} 🧙‍♂️\n🧙‍♂️ Points d'attaque : ${heroMage.ptsAtt} 🧙‍♂️\n🧙‍♂️ Points de mana : ${heroMage.mana} 🧙‍♂️`);
+console.log(`🏹 ${heroArcher.nom} 🏹\n🏹 Points de vie : ${heroArcher.pdv} 🏹\n🏹 Points d'attaque : ${heroArcher.ptsAtt} 🏹\n🏹 Nombre de flèches : ${heroArcher.fleche} 🏹`);
 
 console.log("----------------------------------------------------------------------------");
 console.log("🏰 En quête du très prisé trésor du donjon de Molenkmar, vous vous dirigez vers ce dernier d'un pas assuré et conquérant 🏰");
