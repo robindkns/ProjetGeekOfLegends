@@ -81,7 +81,7 @@ export class archer extends personnage{
             this.fleche = this.fleche + 1;
             console.log(`☠️ ${this.nom} récupère une flèche in extremis ! ☠️`);
             console.log(`☠️ Il lui reste ${this.fleche} flèches 🏹 ☠️`);
-            } else {
+        } else {
             console.log(`☠️ ${this.nom} n'a plus assez de flèche ! Il ne peut pas attaquer... ☠️`);
             console.log(`☠️ ${this.nom} passe son tour et récupère 6 flèches 🏹 ☠️`);
         }

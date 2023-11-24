@@ -319,6 +319,7 @@ function combat(boss,heroWar,heroMag,heroArc) {
                 i--;
             }
 
+            heroWar.rage++;
             console.log(`☠️ FIN DU TOUR ! ☠️`);
             console.log(`☠️ ${boss.nom} a ${boss.pdv}PV ☠️`);
 
