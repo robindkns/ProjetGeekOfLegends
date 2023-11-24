@@ -238,7 +238,7 @@ function enigme(nameBoss) {
                 while (essai != 0) {
                     rep = prompt("❓ Qu'est-ce qui peut remplir une pièce entière sans prendre de place ? ❓\n🔄️ Nombre d'essai restants : " + essai);
                     rep = rep.toLowerCase();
-                    if (rep == "lumière" || rep == "lumiere" || rep == "la lumière" || rep == "une lumière") {
+                    if (rep == "lumière" || rep == "lumiere" || rep == "la lumière" || rep == "une lumière" || rep == "air" || rep == "l'air" || rep == "fumée" || rep == "la fumée") {
                         repFinale = true;
                         essai = 0;
                     }else {
@@ -330,6 +330,7 @@ function combat(boss,heroWar,heroMag,heroArc) {
                     console.log(`⚰️ ${randomAttacked[i].nom} est mort ⚰️`);
                     cimetiere.push(randomAttacked[i]);
                     randomAttacked.splice(randomAttacked.indexOf(randomAttacked[i]),1);
+                    i--;
                 }
             }
         }
