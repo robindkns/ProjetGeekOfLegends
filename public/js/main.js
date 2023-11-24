@@ -20,9 +20,15 @@ function combat(boss,heroWar,heroMag,heroArc) {
     let randomAttacked = [heroWar,heroMag,heroArc];
     let cpt = 0;
     let cimetiere = [];
+    let pvEnigme = boss.pdv/5;
     console.log("----------------------------------------------------------------------------");
     console.log("☠️ Le premier tour du combat commence ! ☠️");
-    while (boss.pdv > 0 || cimetiere.length != 3) {
+
+    while (boss.pdv > 0 && cimetiere.length != 3) {
+        if (boss.pdv <= pvEnigme) {
+            
+        }
+
         for (let i = 0; i < 1; i++) {
             console.log("☠️ Vous avez le choix entre vous défendre, ou attaquer ! Que choisissez-vous ? ☠️");
             let turnChoice = +prompt("🗡️ 1. ATTAQUER 🗡️\n🛡️ 2. SE DÉFENDRE 🛡️");
@@ -38,7 +44,7 @@ function combat(boss,heroWar,heroMag,heroArc) {
                 if (heroArc.pdv > 0){
                     heroArc.flecheAttack(boss);
                 }               
-                
+
                 for (let i = 0; i < randomAttacked.length; i++) {               //Augmente aux héros en posture Défensive, une chance d'être attaqué
                     if (randomAttacked[i].classe[1] == "Défensif") {
                         let moreChance = randomAttacked[i];
@@ -52,9 +58,12 @@ function combat(boss,heroWar,heroMag,heroArc) {
                 console.log(`☠️ ${boss.nom} se rue vers ${randomAttacked[randomChoice].nom} ! ☠️`);
                 boss.attackBoss(randomAttacked[randomChoice]);
 
-                for (let i = 0; i < cpt; i++) {    //Retire les doublons du tableau duquel on envoie aléatoirement l'héros qui se fera attaquer     
-                    randomAttacked.pop();
+                if (cpt != 0) {
+                    for (let i = 0; i < cpt; i++) {    //Retire les doublons du tableau duquel on envoie aléatoirement l'héros qui se fera attaquer     
+                        randomAttacked.pop();
+                    }
                 }
+                cpt=0;
             } else if (turnChoice == 2){
                 let randomChoice = Math.floor(Math.random() * randomAttacked.length);
                 console.log(`☠️ ${boss.nom} se rue vers ${randomAttacked[randomChoice].nom} ! ☠️`);
@@ -80,6 +89,15 @@ function combat(boss,heroWar,heroMag,heroArc) {
         console.log(`Cimetierre : ${cimetiere}`);
         console.log(`En vie : ${randomAttacked}`);
         console.log("-------------------------------------------------");
+    }
+    if (cimetiere.length == 3){
+        console.log(`⚰️ Vous avez lamentablement échoué... ⚰️`);
+        console.log(`☠️ ${boss.nom} : "Hahahaha... Ils pensaient vraiment pouvoir dompter ma puissance..." ☠️`);
+    } else {
+        console.log(`☠️ ${boss.nom} a été vaincu ! ☠️`);
+        console.log(`🏆 FÉLICITATIONS ! VOUS ÊTES VENU À BOUT DU BOSS ! 🏆`);
+        console.log(`🏆 Vous avancez victorieusement vers la salle contenant le trésor, un lueur vive émane de cette salle 🏆`);
+        console.log(`🏆 Oseriez vous retenter l'aventure et emprunter les autres chemins ? 🏆`);
     }
 }
 
