@@ -30,7 +30,9 @@ function enigme(nameBoss) {
                 while (essai != 0) {
                     rep = prompt("❓ Je suis quelque chose qui t'appartient mais que les gens utilisent plus que toi, qui suis-je ? ❓\n🔄️ Nombre d'essai restants : " + essai);
                     rep = rep.toLowerCase();
-                    if (rep == "prenom" || rep == "prénom" || rep == "le prenom" || rep == " le prénom" || rep == "mon prénom" || rep == "mon prenom") {
+                    rep = rep.trim();
+                    rep = rep.split(" ").join("");
+                    if (rep == "prenom" || rep == "prénom" || rep == "leprenom" || rep == " leprénom" || rep == "monprénom" || rep == "monprenom") {
                         repFinale = true;
                         essai = 0;
                     }else {
@@ -55,7 +57,9 @@ function enigme(nameBoss) {
                 while (essai != 0) {
                     rep = prompt("❓ En étant cassé je suis plus utile que quand je ne le suis pas, qui suis-je ? ❓\n🔄️ Nombre d'essai restants : " + essai);
                     rep = rep.toLowerCase();
-                    if (rep == "oeuf" || rep == "un oeuf" || rep == "l'oeuf") {
+                    rep = rep.trim();
+                    rep = rep.split(" ").join("");
+                    if (rep == "oeuf" || rep == "unoeuf" || rep == "l'oeuf") {
                         repFinale = true;
                         essai = 0;
                     }else {
@@ -80,7 +84,9 @@ function enigme(nameBoss) {
                 while (essai != 0) {
                     rep = prompt("❓ Je suis grand quand je suis jeune et petit quand je suis vieux. Je rayonne de vie et le vent est mon plus grand ennemi. Que suis-je ? ❓\n🔄️ Nombre d'essai restants : " + essai);
                     rep = rep.toLowerCase();
-                    if (rep == "bougie" || rep == "cierge" || rep == "une bougie" || rep == "un cierge") {
+                    rep = rep.trim();
+                    rep = rep.split(" ").join("");
+                    if (rep == "bougie" || rep == "cierge" || rep == "unebougie" || rep == "uncierge") {
                         repFinale = true;
                         essai = 0;
                     }else {
@@ -111,7 +117,9 @@ function enigme(nameBoss) {
                 while (essai != 0) {
                     rep = prompt("❓ Je suis entouré de poils et je suis au milieu. J'ai une ouverture que tu peux voir qui s'ouvre et se ferme, qui suis-je ? ❓\n🔄️ Nombre d'essai restants : " + essai);
                     rep = rep.toLowerCase();
-                    if (rep == "oeil" || rep == "yeux" || rep == "un oeil" || rep == "les yeux") {
+                    rep = rep.trim();
+                    rep = rep.split(" ").join("");
+                    if (rep == "oeil" || rep == "yeux" || rep == "unoeil" || rep == "lesyeux" || rep == "l'oeil" || rep == "loeil") {
                         repFinale = true;
                         essai = 0;
                     }else {
@@ -135,7 +143,9 @@ function enigme(nameBoss) {
                 while (essai != 0) {
                     rep = prompt("❓ Je me lève quand je suis content, mais je suis plus petit que le reste, qui suis-je ? ❓\n🔄️ Nombre d'essai restants : " + essai);
                     rep = rep.toLowerCase();
-                    if (rep == "pouce" || rep == "le pouce" || rep == "un pouce") {
+                    rep = rep.trim();
+                    rep = rep.split(" ").join("");
+                    if (rep == "pouce" || rep == "lepouce" || rep == "unpouce") {
                         repFinale = true;
                         essai = 0;
                     }else {
@@ -159,7 +169,9 @@ function enigme(nameBoss) {
                 while (essai != 0) {
                     rep = prompt("❓ Je suis une partie de l'être humain capable d'augmenter par 9 sa taille, qui suis-je ? ❓\n🔄️ Nombre d'essai restants : " + essai);
                     rep = rep.toLowerCase();
-                    if (rep == "pupille" || rep == "une pupille" || rep == "la pupille" || rep == "les pupilles") {
+                    rep = rep.trim();
+                    rep = rep.split(" ").join("");
+                    if (rep == "pupille" || rep == "unepupille" || rep == "lapupille" || rep == "lespupilles") {
                         repFinale = true;
                         essai = 0;
                     }else {
@@ -190,7 +202,9 @@ function enigme(nameBoss) {
                 while (essai != 0) {
                     rep = prompt("❓ Toute chose, il dévore. Il ronge le fer, fait disparaître l’acier et réduit les pierres en poussière. Qui est-ce ? ❓\n🔄️ Nombre d'essai restants : " + essai);
                     rep = rep.toLowerCase();
-                    if (rep == "temps" || rep == "le temps") {
+                    rep = rep.trim();
+                    rep = rep.split(" ").join("");
+                    if (rep == "temps" || rep == "letemps") {
                         repFinale = true;
                         essai = 0;
                     }else {
@@ -214,7 +228,9 @@ function enigme(nameBoss) {
                 while (essai != 0) {
                     rep = prompt("❓ Qui a deux aiguilles, mais ne pique pas ? ❓\n🔄️ Nombre d'essai restants : " + essai);
                     rep = rep.toLowerCase();
-                    if (rep == "montre" || rep == "une montre" || rep == "la montre" || rep == "horloge" || rep == "une horloge" || rep == "l'horloge") {
+                    rep = rep.trim();
+                    rep = rep.split(" ").join("");
+                    if (rep == "montre" || rep == "unemontre" || rep == "lamontre" || rep == "horloge" || rep == "unehorloge" || rep == "l'horloge") {
                         repFinale = true;
                         essai = 0;
                     }else {
@@ -238,7 +254,9 @@ function enigme(nameBoss) {
                 while (essai != 0) {
                     rep = prompt("❓ Qu'est-ce qui peut remplir une pièce entière sans prendre de place ? ❓\n🔄️ Nombre d'essai restants : " + essai);
                     rep = rep.toLowerCase();
-                    if (rep == "lumière" || rep == "lumiere" || rep == "la lumière" || rep == "une lumière" || rep == "air" || rep == "l'air" || rep == "fumée" || rep == "la fumée") {
+                    rep = rep.trim();
+                    rep = rep.split(" ").join("");
+                    if (rep == "lumière" || rep == "lumiere" || rep == "lalumière" || rep == "lalumiere" || rep == "unelumière" || rep == "unelumiere"|| rep == "air" || rep == "l'air" || rep == "fumée" || rep == "lafumée" || rep == "fumee" ||rep == "lafumee" ) {
                         repFinale = true;
                         essai = 0;
                     }else {

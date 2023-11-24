@@ -76,6 +76,7 @@ export class archer extends personnage{
     flecheAttack(ennemi){
         if (this.fleche >= 2) {
             ennemi.pdv = ennemi.pdv - this.ptsAtt;
+            this.fleche = this.fleche - 2;
             console.log(`☠️ ${this.nom} attaque ${ennemi.nom} à l'aide de deux de ses flèches ! ☠️`);
             console.log(`☠️ ${ennemi.nom} perd ${this.ptsAtt}PV ☠️`);
             this.fleche = this.fleche + 1;
