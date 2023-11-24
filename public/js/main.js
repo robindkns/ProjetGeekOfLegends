@@ -19,17 +19,26 @@ function postureDef(perso) {
 function combat(boss,heroWar,heroMag,heroArc) {
     let randomAttacked = [heroWar,heroMag,heroArc];
     let cpt = 0;
+    let cimetiere = [];
     console.log("----------------------------------------------------------------------------");
     console.log("☠️ Le premier tour du combat commence ! ☠️");
-    while (boss.pdv > 0 || (heroWar.pdv > 0 && heroMag.pdv > 0 && heroArc.pdv > 0)) {
+    while (boss.pdv > 0 || cimetiere.length != 3) {
         for (let i = 0; i < 1; i++) {
             console.log("☠️ Vous avez le choix entre vous défendre, ou attaquer ! Que choisissez-vous ? ☠️");
             let turnChoice = +prompt("🗡️ 1. ATTAQUER 🗡️\n🛡️ 2. SE DÉFENDRE 🛡️");
             if (turnChoice == 1) {
-                heroWar.rageAttack(boss);
-                heroMag.manaAttack(boss);
-                heroArc.flecheAttack(boss);
+                if (heroWar.pdv > 0) {
+                    heroWar.rageAttack(boss);
+                }
 
+                if (heroMag.pdv > 0){
+                    heroMag.manaAttack(boss);
+                }
+
+                if (heroArc.pdv > 0){
+                    heroArc.flecheAttack(boss);
+                }               
+                
                 for (let i = 0; i < randomAttacked.length; i++) {               //Augmente aux héros en posture Défensive, une chance d'être attaqué
                     if (randomAttacked[i].classe[1] == "Défensif") {
                         let moreChance = randomAttacked[i];
@@ -54,7 +63,23 @@ function combat(boss,heroWar,heroMag,heroArc) {
                 alert("❗ Erreur d'entrée, veuillez uniquement choisir 1 ou 2 ❗");
                 i--;
             }
+
+            console.log(`☠️ FIN DU TOUR ! ☠️`);
+            console.log(`☠️ ${boss.nom} a ${boss.pdv}PV ☠️`);
+
+            for (let i = 0; i < randomAttacked.length; i++) {
+                if (randomAttacked[i].pdv > 0) {
+                    console.log(`☠️ ${randomAttacked[i].nom} a ${randomAttacked[i].pdv}PV ☠️`);
+                } else {
+                    console.log(`⚰️ ${randomAttacked[i].nom} est mort ⚰️`);
+                    cimetiere.push(randomAttacked[i]);
+                    randomAttacked.splice(randomAttacked.indexOf(randomAttacked[i]),1);
+                }
+            }
         }
+        console.log(`Cimetierre : ${cimetiere}`);
+        console.log(`En vie : ${randomAttacked}`);
+        console.log("-------------------------------------------------");
     }
 }
 
@@ -82,7 +107,7 @@ console.log("* Chaque héros possède une caractéristique propre à lui-même *
 console.log("----------------------------------------------------------------------------");
 console.log("🪓 LE GUERRIER 🪓");
 console.log("🪓 Tous les tours le guerrier gagne 1 point de rage au bout de 4 points, 🪓");
-console.log("🪓 le guerrier gagne 25% d'attaque supplémentaire durant 1 tours 🪓");
+console.log("🪓 le guerrier gagne 25% d'attaque supplémentaire durant 1 tour 🪓");
 console.log("🪓 puis retombe à 0 de rage et perd ce bonus. 🪓");
 console.log("----------------------------------------------------------------------------");
 console.log("🧙‍♂️ LE MAGE 🧙‍♂️");
